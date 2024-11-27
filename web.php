@@ -1,24 +1,48 @@
 <?php
 
+use App\Http\Controllers\empcontroller;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EmployeeController;
 
-Route::get('/',[EmployeeController::class,'display']);
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
 
-// Route::get('/home', function () {
-//     echo "yash";
+Route::get('/', function () {
+    return view('register');
+});
+
+// Route::get('/register', function () {
+//     return view('register');
 // });
 
-Route::get('/register',[EmployeeController::class,'openRegister']);
+Route::get("/register",[empcontroller::class,'openregister']);
 
-Route::post("/store",[EmployeeController::class,'store']);
+Route::post("/store",[empcontroller::class,'store']);
 
-Route::get('/display',[EmployeeController::class,'display'])->name("display");
+Route::get("/display",[empcontroller::class,'display'])->name("display");
 
-Route::post("/delete/{id}",[EmployeeController::class,'delete']);
+Route::get("/delete/{id}",[empcontroller::class,'delete']);
 
-Route::get('/editData/{id}',[EmployeeController::class,'editData']);
+Route::get("/update/{id}",[empcontroller::class,'update']);
 
-Route::post("/update",[EmployeeController::class,'update']);
+Route::post("/storeupdate",[empcontroller::class,'storeupdate']);
+
+
+//second crud
+Route::get("/stdregister",[empcontroller::class,'stdregister']);
+
+Route::post("/stdstore",[empcontroller::class,'stdstore']);
+
+Route::get("/stddisplay",[empcontroller::class,'stddisplay'])->name("stddisplay");
+
+Route::get("/stddelete/{id}",[empcontroller::class,'stddelete']);
+
 
 

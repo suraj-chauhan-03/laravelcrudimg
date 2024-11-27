@@ -1,56 +1,63 @@
 <div>
-    <h1>Welcome to the Update</h1>
-        <form action="/update" method="post" enctype="multipart/form-data" >
-            @csrf
-            <table>
-                <tr>
-                    <input type="hidden" name="eid" value="{{$employee->eid}}">
-                </tr>
-                <tr>
-                    <td>Name:- </td>
-                    <td><input type="text" name="name" value="{{$employee->name}}"></td>
-                </tr>
-                <tr>
-                    <td>Eamil:- </td>
-                    <td><input type="email" name="email" value="{{$employee->email}}"></td>
-                </tr>
-                <tr>
-                    <td>Gender:- </td>
-                    <td><input type="radio" name="gender" id="" value="male" {{ $employee->gender=="male"? "checked":"" }} >Male &nbsp; 
-                        <input type="radio" name="gender" id="" value="female" {{ $employee->gender=="female"? "checked":"" }}>Female</td>
-                </tr>
-                <tr>
-                    <td>City:- </td>
-                    <td>
-                        <select name="city" id="">
-                            <option value="surat" {{ $employee->city=="surat"? "selected":"" }}>Suart</option>
-                            <option value="navsari" {{ $employee->city=="navsari"? "selected":"" }}>Navsari</option>
-                            <option value="vapi"  {{ $employee->city=="vapi"? "selected":"" }}>Vapi</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Hobby:-</td>
-                    <td>
-                        @php
-                            $arr=explode(",",$employee->hobby);
-                        @endphp
-                        <input type="checkbox" name="hobby[]" id="" value="cricket" {{in_array("cricket",$arr) ? "checked" : ""}}>Cricket &nbsp;
-                        <input type="checkbox" name="hobby[]" id="" value="golf" {{in_array("golf",$arr) ? "checked" : ""}}>Golf &nbsp;
-                        <input type="checkbox" name="hobby[]" id="" value="other" {{in_array("other",$arr) ? "checked" : ""}}>Otehr &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td>Date Of Birth:-</td>
-                    <td><input type="date" name="dob" id="" value="{{$employee->dob}}"></td>
-                </tr>
-                <tr>
-                    <td>Image oF employee</td>
-                    <td><input type="file" name="image" id="" accept="image/*"></td>
-                </tr>
-                <tr>
-                    <td><button type="submit">Update</button></td>
-                </tr>
-            </table>
+    <!-- Life is available only in the present moment. - Thich Nhat Hanh -->
+     <h1>update page</h1>
+    
+    
+    <form action="/storeupdate" method="post">
+        @csrf
+     <table>
+        <input type="hidden" name="eid" id="" value="{{$updatedata->eid}}">
+            <tr>
+
+                <td>Name :-</td>
+                <td><input type="text" name="name" id="" value="{{$updatedata->name}}"></td>
+            </tr>
+            <tr>
+
+                <td>email :-</td>
+                <td><input type="text" name="email" id="" value="{{$updatedata->email}}" ></td>
+            </tr>
+            <tr>
+
+                <td>gender :-</td>
+                <td><input type="radio" name="gender" id="" value="male" {{$updatedata->gender=="male"?'checked':''}} >Male
+                <input type="radio" name="gender" id="" value="female" {{ $updatedata->gender=="female"?'checked':'' }}>Female</td>
+
+            </tr>
+            <tr>
+
+                <td>city :-</td>
+                <td><select name="city" id="" >
+                    <option value="surat" {{$updatedata->city=="surat"?'selected':''}}>surat</option>
+                    <option value="ahm" {{$updatedata->city=="ahm"?'selected':''}}>Ahm</option>
+                    <option value="ank" {{$updatedata->city=="ank"?'selected':''}}>ank</option>
+                    <option value="valsad">valsad</option>
+                </select></td>
+            </tr>
+            <tr>
+
+                @php
+                $arr = explode(",",$updatedata->hobby);
+                @endphp
+                <td>hobby :-</td>
+                <td><input type="checkbox" name="hobby[]" id="" value="volleyball" {{in_array("volleyball",$arr)?'checked':''}}>volleyball
+                <input type="checkbox" name="hobby[]" id="" value="cricket"{{in_array("cricket",$arr)?'checked':''}}>cricket
+                <input type="checkbox" name="hobby[]" id="" value="batminton" {{in_array("batminton",$arr)?'checked':''}}>batminton</td>
+
+            </tr>
+            <tr>
+
+                <td>dob :-</td>
+                <td><input type="date" name="dob" id="" value="{{$updatedata->dob}}"></td>
+            </tr>
+            <tr>
+
+                
+                <td><button type="submit" >Update</button></td>
+                <td>
+                
+                </td>
+            </tr>
+        </table>
         </form>
 </div>
